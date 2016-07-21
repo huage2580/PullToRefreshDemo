@@ -139,7 +139,8 @@ public class PullToRefreshLayout extends FrameLayout {
                 if (yDiff<mRefreshMinDis){
                    reLoadingView();
                 }else {//开始转圈圈
-                    mRotationAnimator=ObjectAnimator.ofFloat(loadingView,"Rotation",mLoadViewRotation%360,720).setDuration(1000);
+                    final float realRotation=mLoadViewRotation%360;
+                    mRotationAnimator=ObjectAnimator.ofFloat(loadingView,"Rotation",realRotation,720+realRotation).setDuration(1000);
                     mRotationAnimator.setRepeatCount(ValueAnimator.INFINITE);
                     mRotationAnimator.start();
                     //回调接口
